@@ -2,6 +2,7 @@
   "name": "prisma-workshop2",
   "license": "UNLICENSED",
   "dependencies": {
+    "@prisma/cli": "^2.0.0-beta.5",
     "nexus": "^0.21.0",
     "nexus-plugin-prisma": "^0.8.0"
   },
@@ -9,7 +10,10 @@
     "format": "npx prettier --write './**/*.{ts,md}'",
     "dev": "nexus dev",
     "build": "nexus build",
-    "start": "node node_modules/.build"
+    "start": "node node_modules/.build",
+    "migrate:save": "prisma migrate save --experimental",
+    "migrate:up": "prisma migrate up --experimental",
+    "migrate:down": "prisma migrate down --experimental"
   },
   "prettier": {
     "semi": false,
