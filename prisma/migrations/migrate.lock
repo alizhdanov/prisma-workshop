@@ -4,3 +4,6 @@
 # Read more about conflict resolution here: TODO
 
 20200520215119-init
+20200525212118-add-user-and-post-model
+20200525212250-remove-no-null-constraints-from-user-model-fields
+20200525212648-add-relation
