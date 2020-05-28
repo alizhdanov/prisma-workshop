@@ -2,9 +2,11 @@
 
 You need to have running database (PostgresSQL). You have few options here
 
-## If you already have PostgresSQL installed
+## With Docker Compose
 
-- Go to `prisma/.env` file and change DATABASE_URL value to match your database url. Format is `postgresql://USER:PASSWORD@HOST:PORT/DATABASE?KEY1=VALUE&KEY2=VALUE&KEY3=VALUE`. [More info you can find here](https://www.prisma.io/docs/reference/database-connectors/postgresql/)
+Make sure you have installed docker
+
+- Run `docker-compose up -d`
 - Run `npm install`
 - Run `npm run migrate:up`
 - Run `npm run seed`
@@ -13,11 +15,9 @@ You should see
 
 ![result](tmp/result.png)
 
-## With Docker Compose
+## If you already have PostgresSQL installed
 
-Make sure you have installed docker
-
-- Run `docker-compose up -d`
+- Go to `prisma/.env` file and change DATABASE_URL value to match your database url. Format is `postgresql://USER:PASSWORD@HOST:PORT/DATABASE?KEY1=VALUE&KEY2=VALUE&KEY3=VALUE`. [More info you can find here](https://www.prisma.io/docs/reference/database-connectors/postgresql/)
 - Run `npm install`
 - Run `npm run migrate:up`
 - Run `npm run seed`
