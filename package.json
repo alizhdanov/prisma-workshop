@@ -13,7 +13,8 @@
     "start": "node node_modules/.build",
     "migrate:save": "prisma migrate save --experimental",
     "migrate:up": "prisma migrate up --experimental",
-    "migrate:down": "prisma migrate down --experimental"
+    "migrate:down": "prisma migrate down --experimental",
+    "seed": "node prisma/seed.js"
   },
   "prettier": {
     "semi": false,

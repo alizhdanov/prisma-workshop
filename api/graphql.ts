@@ -1,35 +1,27 @@
 import { schema } from 'nexus'
 
 schema.objectType({
-  name: 'World',
+  name: 'Test',
   definition(t) {
     t.model.id()
     t.model.name()
-    t.model.population()
-
-    t.field('name_string', {
-      type: 'String',
-      resolve(_root, args, ctx, info) {
-        return 'static again 🤦🏻‍♀️'
-      },
-    })
   },
 })
 
-schema.queryType({
-  definition(t) {
-    t.crud.world()
-    t.crud.worlds()
-  },
-})
+// schema.queryType({
+//   definition(t) {
+//     t.crud.world()
+//     t.crud.worlds()
+//   },
+// })
 
-schema.mutationType({
-  definition(t) {
-    t.crud.createOneWorld()
-    t.crud.updateOneWorld()
-    t.crud.deleteOneWorld()
-  },
-})
+// schema.mutationType({
+//   definition(t) {
+//     t.crud.createOneWorld()
+//     t.crud.updateOneWorld()
+//     t.crud.deleteOneWorld()
+//   },
+// })
 
 // schema.queryType({
 //   definition(t) {

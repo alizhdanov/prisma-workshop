@@ -6,9 +6,8 @@ datasource db {
 generator prisma_client {
   provider = "prisma-client-js"
 }
-     
-model World {
-  id         Int    @id @default(autoincrement())
-  name       String @unique
-  population Float
+
+model Test {
+  id   Int    @id @default(autoincrement())
+  name String @unique
 }
