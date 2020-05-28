@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator prisma_client {
@@ -37,6 +37,5 @@ model Comment {
 
 model Tag {
   id       Int    @default(autoincrement()) @id
-  name     String
   articles Post[] @relation(references: [id])
 }

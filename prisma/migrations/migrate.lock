@@ -7,3 +7,5 @@
 20200525212118-add-user-and-post-model
 20200525212250-remove-no-null-constraints-from-user-model-fields
 20200525212648-add-relation
+20200525213432-add-other-staff
+20200525213608-add-name-field-to-comment-model

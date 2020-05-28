@@ -1,62 +1,113 @@
 import { schema } from 'nexus'
 
+// Define types
+
 schema.objectType({
-  name: 'World',
+  name: 'User',
   definition(t) {
     t.model.id()
-    t.model.name()
-    t.model.population()
+    t.model.email()
+    t.model.bio()
+    t.model.image()
+    t.model.articles()
+  },
+})
 
-    t.field('name_string', {
-      type: 'String',
-      resolve(_root, args, ctx, info) {
-        return 'static again 🤦🏻‍♀️'
+schema.objectType({
+  name: 'Post',
+  definition(t) {
+    t.model.id()
+    t.model.title()
+    t.model.body()
+    t.model.user()
+  },
+})
+
+schema.inputObjectType({
+  name: 'PostCreateInput',
+  definition(t) {
+    t.string('title', { required: true })
+    t.string('body', { required: true })
+  },
+})
+
+// Define queries
+
+schema.queryType({
+  definition(t) {
+    t.crud.users()
+    t.crud.posts()
+    t.crud.post()
+
+    t.field('user', {
+      type: 'User',
+      args: {
+        email: schema.stringArg({ required: true }),
+      },
+      resolve(root, args, ctx, info) {
+        return ctx.db.user.findOne({
+          where: {
+            email: args.email,
+          },
+        })
       },
     })
   },
 })
 
-schema.queryType({
-  definition(t) {
-    t.crud.world()
-    t.crud.worlds()
-  },
-})
-
+// Define mutations
 schema.mutationType({
   definition(t) {
-    t.crud.createOneWorld()
-    t.crud.updateOneWorld()
-    t.crud.deleteOneWorld()
+    t.crud.updateOneUser()
+    t.crud.updateOnePost()
+
+    t.field('createUser', {
+      type: 'User',
+      args: {
+        data: schema.arg({
+          type: schema.inputObjectType({
+            name: 'UserCreateInput',
+            definition(t) {
+              t.string('email', { required: true })
+              t.string('bio')
+              t.string('image')
+            },
+          }),
+          required: true,
+        }),
+      },
+      resolve(_, { data }, { db }) {
+        return db.user.create({ data })
+      },
+    })
+
+    t.field('createArticle', {
+      type: 'Post',
+      args: {
+        data: schema.arg({
+          type: 'PostCreateInput',
+          required: true,
+        }),
+        authorEmail: schema.idArg({ required: true }),
+      },
+      async resolve(_, { data, authorEmail }, { db }) {
+        const user = await db.user.findOne({ where: { email: authorEmail } })
+
+        if (!user) {
+          throw new Error('Unable to find author with give email 😭')
+        }
+
+        return db.post.create({
+          data: {
+            ...data,
+            user: {
+              connect: {
+                id: user.id,
+              },
+            },
+          },
+        })
+      },
+    })
   },
 })
-
-// schema.queryType({
-//   definition(t) {
-//     t.field('hello', {
-//       type: 'World',
-//       args: {
-//         world: schema.stringArg({ required: false }),
-//       },
-//       async resolve(_root, args, ctx) {
-//         const worldToFindByName = args.world ?? 'Earth'
-//         const world = await ctx.db.world.findOne({
-//           where: {
-//             name: worldToFindByName,
-//           },
-//         })
-
-//         if (!world) throw new Error(`No such world named "${args.world}"`)
-
-//         return world
-//       },
-//     })
-
-//     t.list.field('worlds', {
-//       type: 'World',
-//       resolve(_root, _args, ctx) {
-//         return ctx.db.world.findMany()
-//       },
-//     })
-//   },
-// })
