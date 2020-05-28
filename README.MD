@@ -11,7 +11,7 @@ You need to have running database (PostgresSQL). You have few options here
 
 You should see
 
-![result](tmp/result.png | width=300)
+![result](tmp/result.png)
 
 ## With Docker Compose
 
@@ -24,7 +24,7 @@ Make sure you have installed docker
 
 You should see
 
-![result](tmp/result.png | width=300)
+![result](tmp/result.png)
 
 ## With Heroku
 
