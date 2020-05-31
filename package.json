@@ -2,7 +2,7 @@
   "name": "prisma-workshop2",
   "license": "UNLICENSED",
   "dependencies": {
-    "@prisma/cli": "^2.0.0-beta.5",
+    "@prisma/cli": "^2.0.0-beta.7",
     "nexus": "^0.22.0",
     "nexus-plugin-prisma": "^0.8.0"
   },
@@ -14,6 +14,7 @@
     "migrate:save": "prisma migrate save --experimental",
     "migrate:up": "prisma migrate up --experimental",
     "migrate:down": "prisma migrate down --experimental",
+    "generate": "prisma generate",
     "seed": "node prisma/seed.js"
   },
   "prettier": {

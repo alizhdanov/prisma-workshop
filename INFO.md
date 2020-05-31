@@ -4,7 +4,7 @@ Fields https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/m
 Scalars - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/data-model#scalar-types
 Enums - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/data-model#enums
 ID's - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/data-model#ids
-Attributes - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/data-model#enums
+Attributes - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/data-model#attributes
 Default values - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/data-model#default-values
 
 Relations
@@ -15,3 +15,10 @@ n-n - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-schema/re
 ## Client
 
 CRUD - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/crud
+
+## Nexus
+
+https://nexusjs.org/
+
+schema - https://www.nexusjs.org/#/api/modules/main/exports/schema
+prisma-plugin - https://www.nexusjs.org/#/plugins/prisma
