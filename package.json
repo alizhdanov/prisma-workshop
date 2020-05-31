@@ -4,7 +4,8 @@
   "dependencies": {
     "@prisma/cli": "^2.0.0-beta.5",
     "nexus": "^0.22.0",
-    "nexus-plugin-prisma": "^0.8.0"
+    "nexus-plugin-prisma": "^0.8.0",
+    "postgres": "^1.0.2"
   },
   "scripts": {
     "format": "npx prettier --write './**/*.{ts,md}'",
@@ -14,7 +15,8 @@
     "migrate:save": "prisma migrate save --experimental",
     "migrate:up": "prisma migrate up --experimental",
     "migrate:down": "prisma migrate down --experimental",
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.js",
+    "generate": "prisma generate"
   },
   "prettier": {
     "semi": false,
